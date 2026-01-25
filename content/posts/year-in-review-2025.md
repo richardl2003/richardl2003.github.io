@@ -40,7 +40,7 @@ Throughout this new year, I'm aiming to blog weekly about an insight I took away
 
 This year was largely about navigating transitions and filtering through noise. Here are a few lessons that stood out:
 
-**Don't Optimize, Just Start**: I’ve always had a tendency to chase the “best” way of doing things: the perfect morning routine, workout plan, obsidian workflow, or productivity setup. What I’ve realized is that I often spent more time optimizing than actually starting. This is evident when it comes to habit building. I often dwelled on the optimizations but the best thing to do is to begin somewhere and iterate over time. Through experimentation, clarity naturally followed.
+**Don't Optimize, Just Start**: I’ve always had a tendency to chase the “best” way of doing things: the perfect morning routine, workout plan, obsidian workflow, or productivity setup. What I’ve realized is that I often spent more time optimizing than actually starting. This is evident when it comes to habit building. I often dwelled on the optimizations but the best thing to do is to begin somewhere and iterate over time. Through experimentation, clarity naturally followed. ^e1d0f2
 
 **Be Curious, Not Judgemental**: One of my favourite quotes from _Ted Lasso_ is: _“Be curious, not judgmental.”_ We have two ears and one mouth for a reason. Actively listening and showing empathy is one area that I have overlooked throughout my life. Throughout my life, I tended to say things without consideration of others. But as I began to foster closer relationships, I recognize that listening, and thinking helps us to understand where someone else is coming from. And that this is so important to always take into consideration situations, context, before we say things. 
 
