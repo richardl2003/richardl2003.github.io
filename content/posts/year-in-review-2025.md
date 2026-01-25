@@ -2,6 +2,7 @@
 title: 2025 Year-In-Review
 tags:
   - reflection
+date: 2026-01-25
 ---
 2025 was a year of **transition** for me: out of university, starting work, and into a more intentional way of living. Although we’re already a month into January, I wanted to start this blog by reflecting on the past year and the shifts that shaped it.
 # Personal

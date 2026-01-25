@@ -2,6 +2,7 @@
 title: Read, Write, Speak
 tags:
   - evergreen
+date: 2026-01-25
 ---
 Before starting an internship, it’s common to feel underprepared. For most students, that feeling shows up as anxiety around technical skills: not knowing enough, not being fast enough, or worrying about falling behind.
 
