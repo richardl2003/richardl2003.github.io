@@ -28,6 +28,8 @@ interface Options {
   rssFullHtml: boolean
   rssSlug: string
   includeEmptyFiles: boolean
+  enableUpdatesRSS?: boolean
+  updatesRssLimit?: number
 }
 
 const defaultOptions: Options = {
@@ -37,6 +39,8 @@ const defaultOptions: Options = {
   rssFullHtml: false,
   rssSlug: "index",
   includeEmptyFiles: true,
+  enableUpdatesRSS: true,
+  updatesRssLimit: 10,
 }
 
 function generateSiteMap(cfg: GlobalConfiguration, idx: ContentIndexMap): string {
@@ -92,6 +96,46 @@ function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndexMap, limit?:
   </rss>`
 }
 
+function generateUpdatesRSSFeed(cfg: GlobalConfiguration, idx: ContentIndexMap, limit?: number): string {
+  const base = cfg.baseUrl ?? ""
+
+  const createURLEntry = (slug: SimpleSlug, content: ContentDetails): string => `<item>
+    <title>${escapeHTML(content.title)}</title>
+    <link>https://${joinSegments(base, encodeURI(slug))}</link>
+    <guid>https://${joinSegments(base, encodeURI(slug))}</guid>
+    <description><![CDATA[ ${content.richContent ?? content.description} ]]></description>
+    <pubDate>${content.date?.toUTCString()}</pubDate>
+  </item>`
+
+  const items = Array.from(idx)
+    .filter(([slug]) => slug.startsWith("updates/") && !slug.endsWith("index"))
+    .sort(([_, f1], [__, f2]) => {
+      if (f1.date && f2.date) {
+        return f2.date.getTime() - f1.date.getTime()
+      } else if (f1.date && !f2.date) {
+        return -1
+      } else if (!f1.date && f2.date) {
+        return 1
+      }
+
+      return f1.title.localeCompare(f2.title)
+    })
+    .map(([slug, content]) => createURLEntry(simplifySlug(slug), content))
+    .slice(0, limit ?? idx.size)
+    .join("")
+
+  return `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>${escapeHTML(cfg.pageTitle)} - Weekly Updates</title>
+      <link>https://${joinSegments(base, "updates")}</link>
+      <description>Weekly updates from ${escapeHTML(cfg.pageTitle)}</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      ${items}
+    </channel>
+  </rss>`
+}
+
 export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
   opts = { ...defaultOptions, ...opts }
   return {
@@ -133,6 +177,15 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
           ctx,
           content: generateRSSFeed(cfg, linkIndex, opts.rssLimit),
           slug: (opts?.rssSlug ?? "index") as FullSlug,
+          ext: ".xml",
+        })
+      }
+
+      if (opts?.enableUpdatesRSS) {
+        yield write({
+          ctx,
+          content: generateUpdatesRSSFeed(cfg, linkIndex, opts.updatesRssLimit),
+          slug: "updates" as FullSlug,
           ext: ".xml",
         })
       }
