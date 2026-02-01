@@ -1,5 +1,5 @@
 ---
-title: Moving Slow
+title: Reflect
 tags:
   - evergreen
 date: 2026-02-01
