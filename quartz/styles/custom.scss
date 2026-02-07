@@ -1,3 +1,524 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ============================================
+// WARM & APPROACHABLE THEME - Custom Styles
+// ============================================
+
+// ------------------------------------------
+// 1. PAGE TRANSITIONS
+// ------------------------------------------
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#quartz-body {
+  animation: fadeIn 0.3s ease-out;
+}
+
+// ------------------------------------------
+// 2. NAVIGATION PROGRESS BAR
+// ------------------------------------------
+#progress {
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--tertiary) 100%) !important;
+}
+
+// ------------------------------------------
+// 3. HOMEPAGE ENHANCEMENTS
+// ------------------------------------------
+
+// Hero accent bar above first heading
+.page > #quartz-body .center > article > h1:first-of-type {
+  position: relative;
+  padding-top: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--tertiary) 100%);
+    border-radius: 2px;
+  }
+}
+
+// Styled first paragraph (intro text)
+article > p:first-of-type {
+  font-size: 1.15em;
+  line-height: 1.7;
+  color: var(--darkgray);
+}
+
+// ------------------------------------------
+// 4. SUBSCRIBE FORM POLISH
+// ------------------------------------------
+.newsletter-form {
+  input[type="email"] {
+    border-radius: 8px;
+    border: 2px solid var(--lightgray);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(192, 125, 83, 0.15);
+      outline: none;
+    }
+
+    &:hover:not(:focus) {
+      border-color: var(--gray);
+    }
+  }
+
+  button[type="submit"] {
+    border-radius: 8px;
+    background: var(--secondary);
+    color: var(--light);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(192, 125, 83, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ------------------------------------------
+// 5. CARD-BASED LISTINGS
+// ------------------------------------------
+
+// Recent notes cards
+.recent-notes > ul > li,
+section > ul.section-ul > li {
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--secondary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Tag and folder listing cards
+.section-li {
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--secondary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// ------------------------------------------
+// 6. MICRO-INTERACTIONS
+// ------------------------------------------
+
+// Links: subtle lift on hover
+a:not(.internal):not(.external):not(.tag) {
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+article a {
+  text-decoration-color: var(--tertiary);
+  text-underline-offset: 3px;
+  transition: all 0.15s ease;
+
+  &:hover {
+    text-decoration-color: var(--secondary);
+  }
+}
+
+// Buttons: translate up on hover
+button, .button, input[type="submit"] {
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Dark mode toggle: rotate icon on hover
+.darkmode {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: rotate(15deg);
+  }
+
+  & > svg {
+    transition: transform 0.3s ease;
+  }
+}
+
+// Images: scale + shadow on hover
+article img:not(.callout-icon) {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Tags: background fill + color invert on hover
+a.internal.tag-link {
+  border-radius: 6px;
+  padding: 0.2em 0.6em;
+  background: var(--lightgray);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--secondary);
+    color: var(--light) !important;
+  }
+}
+
+// ------------------------------------------
+// 7. CALLOUTS
+// ------------------------------------------
+.callout {
+  border-radius: 12px;
+  border-left-width: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  &.callout-note {
+    background: rgba(192, 125, 83, 0.08);
+    border-left-color: var(--secondary);
+  }
+
+  &.callout-tip {
+    background: rgba(212, 165, 116, 0.1);
+    border-left-color: var(--tertiary);
+  }
+
+  &.callout-warning {
+    background: rgba(230, 160, 80, 0.1);
+    border-left-color: #e6a050;
+  }
+
+  &.callout-danger, &.callout-error {
+    background: rgba(200, 100, 80, 0.08);
+    border-left-color: #c86450;
+  }
+
+  &.callout-info {
+    background: rgba(100, 160, 180, 0.08);
+    border-left-color: #64a0b4;
+  }
+
+  .callout-title {
+    font-weight: 600;
+  }
+}
+
+// ------------------------------------------
+// 8. CODE BLOCKS
+// ------------------------------------------
+
+// Inline code
+code:not(pre code) {
+  background: var(--lightgray);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+}
+
+// Code blocks
+pre {
+  border-radius: 12px !important;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--lightgray);
+
+  code {
+    font-feature-settings: "liga" 1, "calt" 1; // Enable ligatures
+  }
+}
+
+// Line hover highlight
+pre.highlight code span.line:hover {
+  background: rgba(192, 125, 83, 0.08);
+}
+
+// ------------------------------------------
+// 9. BLOCKQUOTES
+// ------------------------------------------
+blockquote {
+  border-left: 4px solid var(--secondary);
+  background: rgba(212, 165, 116, 0.08);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+  font-style: italic;
+
+  &::before {
+    content: "\201C";
+    font-size: 3rem;
+    color: var(--tertiary);
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// ------------------------------------------
+// 10. SIDEBAR COMPONENTS
+// ------------------------------------------
+
+// Graph container
+.graph {
+  border-radius: 12px;
+  border: none;
+  overflow: hidden;
+}
+
+// Table of contents
+.toc {
+  .depth-1, .depth-2, .depth-3 {
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    margin: 0.1rem 0;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--lightgray);
+    }
+
+    &.active {
+      background: rgba(192, 125, 83, 0.12);
+      color: var(--secondary);
+      font-weight: 500;
+    }
+  }
+}
+
+// Backlinks
+.backlinks {
+  ul li {
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--lightgray);
+    }
+  }
+}
+
+// ------------------------------------------
+// 11. POPOVERS
+// ------------------------------------------
+.popover > .popover-inner {
+  border-radius: 12px;
+  border: 1px solid var(--lightgray);
+  box-shadow: none;
+}
+
+// ------------------------------------------
+// 12. EXPLORER & FOLDER TREE
+// ------------------------------------------
+.folder-container {
+  .folder-button {
+    border-radius: 8px;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--lightgray);
+    }
+  }
+}
+
+.explorer ul li {
+  border-radius: 6px;
+
+  &:hover {
+    background: var(--lightgray);
+  }
+}
+
+// ------------------------------------------
+// 13. SEARCH
+// ------------------------------------------
+#search-container {
+  #search-icon {
+    transition: all 0.2s ease;
+  }
+
+  &:hover #search-icon {
+    color: var(--secondary);
+  }
+}
+
+#search-layout {
+  .search-bar {
+    border-radius: 12px;
+    border: 2px solid var(--lightgray);
+
+    &:focus-within {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(192, 125, 83, 0.15);
+    }
+  }
+
+  #results-container {
+    border-radius: 12px;
+
+    .result-card {
+      border-radius: 8px;
+      transition: all 0.15s ease;
+
+      &:hover, &.focus {
+        background: var(--lightgray);
+      }
+    }
+  }
+}
+
+// ------------------------------------------
+// 14. HEADER & FOOTER
+// ------------------------------------------
+header {
+  .page-title {
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+}
+
+footer {
+  a {
+    transition: all 0.15s ease;
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+}
+
+// ------------------------------------------
+// 15. BREADCRUMBS
+// ------------------------------------------
+.breadcrumb-container {
+  a {
+    border-radius: 4px;
+    padding: 0.1rem 0.3rem;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: var(--lightgray);
+      color: var(--secondary);
+    }
+  }
+}
+
+// ------------------------------------------
+// 16. GENERAL REFINEMENTS
+// ------------------------------------------
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Selection color
+::selection {
+  background: rgba(192, 125, 83, 0.25);
+  color: var(--dark);
+}
+
+// Focus states
+:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lightgray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--secondary);
+  }
+}
+
+// ------------------------------------------
+// 17. MOBILE RESPONSIVENESS
+// ------------------------------------------
+@media (max-width: 768px) {
+  .recent-notes > ul > li,
+  section > ul.section-ul > li,
+  .section-li {
+    padding: 0.75rem 1rem;
+  }
+
+  blockquote {
+    padding: 0.75rem 1rem;
+
+    &::before {
+      font-size: 2rem;
+    }
+  }
+
+  pre {
+    border-radius: 8px !important;
+  }
+}
