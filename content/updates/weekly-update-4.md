@@ -16,9 +16,9 @@ Mornings are my favourite time of day. I wake up around 6am, and during universi
 
 The same lens applies to my work. Using Claude Code and Windsurf, most of my time isn't spent writing code anymore. It's spent defining *what specifically* to build, deploying across environments, testing, and iterating on UX based on feedback. The execution is the easy part. The hard part is making something that other people and agents will actually use, especially when the job is automating processes in a cloud environment (so many factors like security, reliability, cost, etc. to think about). The surface value of a developer is the code; the real value is the judgment, ownership, and iteration.
 
-> *"The work is yours"* 
+> *"You build it, you own it"*  - Werner Vogels
 
-I'd like to focus on this part of what Werner said. All the PRs I merge, Jira tickets I tackle, they are assigned to me. If something breaks, it comes back to me. Even if an AI agent wrote most of the code. Whether it's a quiet morning or a product decision, real value is not what is most obvious, but what is underneath.
+Lastly, I'd like to focus on this part of what Werner said. All the PRs I merge, Jira tickets I tackle, they are assigned to me. If something breaks, it comes back to me. Even if an AI agent wrote most of the code. Whether it's a quiet morning or a product decision, real value is not what is most obvious, but what is underneath.
 ## Interesting Ideas
 - [Doctor Mike Eats His Last Meal](https://www.youtube.com/watch?v=XrIdECo9YSA): Great interview with many meaningful topics covered: action before motivation, how should we raise children, outlook on the US medical system, healthy skepticism in science, impacts of social media on misinformation, importance of humility. My biggest takeaway from Doctor Mike is always trying to find balance for our health, and how we think about the world.
 - [AI Doesn't Reduce Work -- It Intensifies It](https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it): Interesting study from the HBR where the productivity increase from generation trickles into fatigue, burnout, and decline in quality due to context switching. The authors called for more intentional use of AI at work emphasizing the need for human collaboration, intentional pauses to prevent context switching.
