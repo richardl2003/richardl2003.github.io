@@ -28,7 +28,7 @@ I'm just so grateful I was able to participate and learn about so many different
 
 Gratitude is one thing, but relationships are ongoing and imperfect. This is one area I'm still actively working on improving.
 
-In the book, Dr. Kennedy introduces the idea that ***Two Things Can Be True***. My parents aren't perfect -- there are cultural differences in how we communicate, things we see differently. But I know they are doing their best, and they deserve the benefit of my doubt. What stood out to me about this concept is how it reframes the way we navigate disagreements. A few quote stood out to me:
+In the book, Dr. Kennedy introduces the idea that ***Two Things Can Be True***. My parents aren't perfect -- there are cultural differences in how we communicate, things we see differently. But I know they are doing their best, and they deserve the benefit of my doubt. What stood out to me about this concept is how it reframes the way we navigate disagreements. A few quotes stood out to me:
 
 > *"This idea of multiplicity — the ability to accept multiple realities at once — is critical to healthy relationships."*
 
