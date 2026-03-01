@@ -8,7 +8,7 @@ During his [[weekly-update-1#^c043d6|Re:Invent keynote]], Werner Vogels shared a
 
 Living in our current times of unprecedented change, knowledge work is being massively transformed. Skills like coding, writing, and math once required a high level of friction and time to generate. However, producing code, essays, and solving math questions is as simple as hitting the `Submit` using your favourite AI tool. When looking at the surface level, it seems like those skills are losing value. But I think misses the point entirely.  
 
-In his newsletter this week, Sahil Bloom wrote about [The Doorman Fallacy](https://www.sahilbloom.com/newsletter/the-doorman-fallacy) (very coincidental because throughout this week I was meaning to write about this topic, but was struggling with how to articulate it until I read this in my inbox). This is the tendency to undervalue something by focusing only on its most visible function. When we reduce a skill or role to its most obvious output, we miss everything underneath.
+In his newsletter this week, Sahil Bloom wrote about [The Doorman Fallacy](https://www.sahilbloom.com/newsletter/the-doorman-fallacy) (very coincidental because throughout this week I was meaning to write about this topic, but was struggling with how to articulate it until I read this in my inbox). This is the tendency to undervalue something by focusing only on its most visible function. When we reduce a skill or role to its most obvious output, we miss everything underneath. ^9e52db
 
 The Doorman Fallacy got me to reflect on my personal and work life.
 
