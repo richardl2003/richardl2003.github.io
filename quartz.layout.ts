@@ -49,10 +49,7 @@ export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
       component: Component.HomeIntro({
-        eyebrow: "Writing on work, learning, and life",
-        title: "Richard Li",
-        dek: "I’m a software engineer writing weekly reflections on technology, habits, and the ideas shaping how I think.",
-        subdek: "This is where I publish weekly updates, longer essays, and notes worth keeping.",
+        dek: "I'm a software engineer who enjoys reading, writing, and sharing what I learn along the way. I aim to document weekly reflections on topics that I find interesting. ",
         primaryLink: { label: "Read the latest update", href: "__latest_update__" },
         secondaryLink: { label: "Browse all posts", href: "posts" },
       }),

@@ -14,7 +14,7 @@ interface SiteHeaderOptions {
 }
 
 export default ((opts?: SiteHeaderOptions) => {
-  const Search = SearchConstructor()
+  const Search = SearchConstructor({ showLabel: false })
   const Darkmode = DarkmodeConstructor()
 
   const SiteHeader: QuartzComponent = (props: QuartzComponentProps) => {
@@ -25,7 +25,7 @@ export default ((opts?: SiteHeaderOptions) => {
         <a class="site-header__wordmark" href={baseDir}>
           {props.cfg.pageTitle}
         </a>
-        <div class="site-header__nav-group">
+        <div class="site-header__main">
           <nav class="site-header__nav" aria-label="Primary">
             {(opts?.links ?? []).map((link) => {
               const href = joinSegments(baseDir, link.href)
@@ -44,6 +44,11 @@ export default ((opts?: SiteHeaderOptions) => {
       </div>
     )
   }
+
+  // Propagate child resources so Quartz's build system picks them up
+  SiteHeader.css = [Search.css, Darkmode.css].filter(Boolean).join("\n")
+  SiteHeader.beforeDOMLoaded = Darkmode.beforeDOMLoaded
+  SiteHeader.afterDOMLoaded = Search.afterDOMLoaded
 
   return SiteHeader
 }) satisfies QuartzComponentConstructor<SiteHeaderOptions>

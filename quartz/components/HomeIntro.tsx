@@ -8,8 +8,8 @@ interface LinkConfig {
 }
 
 interface HomeIntroOptions {
-  eyebrow: string
-  title: string
+  eyebrow?: string
+  title?: string
   dek: string
   subdek?: string
   primaryLink: LinkConfig
