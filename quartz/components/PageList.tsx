@@ -3,6 +3,7 @@ import { QuartzPluginData } from "../plugins/vfile"
 import { Date, getDate } from "./Date"
 import { QuartzComponent, QuartzComponentProps } from "./types"
 import { GlobalConfiguration } from "../cfg"
+import { getExcerpt, isPostsIndexSlug, isUpdatesIndexSlug } from "./pageUtils"
 
 export type SortFn = (f1: QuartzPluginData, f2: QuartzPluginData) => number
 
@@ -60,18 +61,35 @@ type Props = {
 export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort }: Props) => {
   const sorter = sort ?? byDateAndAlphabeticalFolderFirst(cfg)
   let list = allFiles.sort(sorter)
+  const isPostsIndex = isPostsIndexSlug(fileData.slug)
+  const isUpdatesIndex = isUpdatesIndexSlug(fileData.slug)
   if (limit) {
     list = list.slice(0, limit)
   }
 
   return (
-    <ul class="section-ul">
+    <ul
+      class={`section-ul${isPostsIndex ? " section-ul--posts" : ""}${
+        isUpdatesIndex ? " section-ul--updates" : ""
+      }`}
+    >
       {list.map((page) => {
         const title = page.frontmatter?.title
         const tags = page.frontmatter?.tags ?? []
+        const excerpt =
+          isPostsIndex || isUpdatesIndex
+            ? getExcerpt(page, {
+                maxLength: isPostsIndex ? 220 : 140,
+                sentences: isPostsIndex ? 2 : 1,
+              })
+            : ""
 
         return (
-          <li class="section-li">
+          <li
+            class={`section-li${isPostsIndex ? " section-li--post" : ""}${
+              isUpdatesIndex ? " section-li--update" : ""
+            }`}
+          >
             <div class="section">
               <p class="meta">
                 {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
@@ -82,19 +100,22 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
                     {title}
                   </a>
                 </h3>
+                {excerpt && <p class="section__excerpt">{excerpt}</p>}
               </div>
-              <ul class="tags">
-                {tags.map((tag) => (
-                  <li>
-                    <a
-                      class="internal tag-link"
-                      href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
-                    >
-                      {tag}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              {(isPostsIndex || (!isUpdatesIndex && tags.length > 0)) && (
+                <ul class="tags">
+                  {tags.map((tag) => (
+                    <li>
+                      <a
+                        class="internal tag-link"
+                        href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
+                      >
+                        {tag}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </li>
         )
@@ -110,5 +131,9 @@ PageList.css = `
 
 .section > .tags {
   margin: 0;
+}
+
+.section__excerpt {
+  margin: 0.5rem 0 0;
 }
 `

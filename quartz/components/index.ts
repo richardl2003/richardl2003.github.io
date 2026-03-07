@@ -23,6 +23,13 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import SiteHeader from "./SiteHeader"
+import HomeIntro from "./HomeIntro"
+import WritingSection from "./WritingSection"
+import FeaturedWriting from "./FeaturedWriting"
+import NewsletterPanel from "./NewsletterPanel"
+import ConnectionsPanel from "./ConnectionsPanel"
+import PersonalFooter from "./PersonalFooter"
 
 export {
   ArticleTitle,
@@ -50,4 +57,11 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  SiteHeader,
+  HomeIntro,
+  WritingSection,
+  FeaturedWriting,
+  NewsletterPanel,
+  ConnectionsPanel,
+  PersonalFooter,
 }
