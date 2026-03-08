@@ -30,7 +30,8 @@ export default ((opts: ConnectionsPanelOptions) => {
     }
 
     const simplifiedSlug = simplifySlug(slug)
-    const allowGraph = opts.showGraph && (isPostSlug(slug) || isResourceSlug(slug))
+    const allowGraph =
+      opts.showGraph && (isPostSlug(slug) || isUpdateSlug(slug) || isResourceSlug(slug))
     const backlinks = props.allFiles.filter((file) => file.links?.includes(simplifiedSlug))
     const hasBacklinks = opts.showBacklinks && backlinks.length > 0
     const isEligible = isPostSlug(slug) || isUpdateSlug(slug) || isResourceSlug(slug)
