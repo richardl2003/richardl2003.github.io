@@ -59,5 +59,10 @@ export default ((opts: ConnectionsPanelOptions) => {
     )
   }
 
+  ConnectionsPanel.css = [Backlinks.css, Graph.css].filter(Boolean).join("\n")
+  ConnectionsPanel.afterDOMLoaded = [Backlinks.afterDOMLoaded, Graph.afterDOMLoaded]
+    .filter(Boolean)
+    .join("\n")
+
   return ConnectionsPanel
 }) satisfies QuartzComponentConstructor<ConnectionsPanelOptions>

@@ -8,6 +8,7 @@ html {
   scroll-behavior: smooth;
   text-size-adjust: none;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
   width: 100%;
 
   @media all and ($mobile) {

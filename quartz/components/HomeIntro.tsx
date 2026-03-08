@@ -36,8 +36,8 @@ export default ((opts: HomeIntroOptions) => {
 
     return (
       <section class="home-intro">
-        <p class="home-intro__eyebrow">{opts.eyebrow}</p>
-        <h1 class="home-intro__title">{opts.title}</h1>
+        {opts.eyebrow && <p class="home-intro__eyebrow">{opts.eyebrow}</p>}
+        {opts.title && <h1 class="home-intro__title">{opts.title}</h1>}
         <p class="home-intro__dek">{opts.dek}</p>
         {opts.subdek && <p class="home-intro__subdek">{opts.subdek}</p>}
         <div class="home-intro__links">

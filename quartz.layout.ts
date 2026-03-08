@@ -7,9 +7,9 @@ export const sharedPageComponents: SharedLayout = {
   header: [
     Component.SiteHeader({
       links: [
-        { label: "Posts", href: "posts" },
-        { label: "Updates", href: "updates" },
-        { label: "Resources", href: "resources" },
+        { label: "About", href: "about" },
+        { label: "Tools", href: "resources/tools" },
+        { label: "Books", href: "resources/books" },
       ],
     }),
   ],
@@ -27,7 +27,7 @@ export const sharedPageComponents: SharedLayout = {
       component: Component.ConnectionsPanel({
         showBacklinks: true,
         showGraph: true,
-        graphCollapsedByDefault: true,
+        graphCollapsedByDefault: false,
       }),
       condition: (page) =>
         page.fileData.slug !== "index" &&
@@ -47,14 +47,6 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.ConditionalRender({
-      component: Component.HomeIntro({
-        dek: "I'm a software engineer who enjoys reading, writing, and sharing what I learn along the way. I aim to document weekly reflections on topics that I find interesting. ",
-        primaryLink: { label: "Read the latest update", href: "__latest_update__" },
-        secondaryLink: { label: "Browse all posts", href: "posts" },
-      }),
-      condition: (page) => page.fileData.slug === "index",
-    }),
     Component.ConditionalRender({
       component: Component.WritingSection({
         title: "Latest Updates",
@@ -79,23 +71,12 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({
-      component: Component.FeaturedWriting({
-        title: "Worth Starting With",
-        slugs: ["posts/year-in-review-2025", "posts/family-day-2026"],
-      }),
-      condition: (page) => page.fileData.slug === "index",
-    }),
-    Component.ConditionalRender({
       component: Component.NewsletterPanel({
         title: "Newsletter",
         description: "Weekly reflections and occasional essays.",
         action: "https://buttondown.com/api/emails/embed-subscribe/richardliy03",
       }),
       condition: (page) => page.fileData.slug === "index",
-    }),
-    Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ConditionalRender({
       component: Component.ArticleTitle(),
@@ -108,13 +89,6 @@ export const defaultContentPageLayout: PageLayout = {
       }),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ConditionalRender({
-      component: Component.TableOfContents(),
-      condition: (page) =>
-        !!page.fileData.slug?.startsWith("posts/") &&
-        !page.fileData.slug?.endsWith("index") &&
-        (page.fileData.toc?.length ?? 0) >= 3,
-    }),
   ],
   left: [],
   right: [],
@@ -122,7 +96,7 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta()],
   left: [],
   right: [],
 }
