@@ -8,7 +8,8 @@ html {
   scroll-behavior: smooth;
   text-size-adjust: none;
   overflow-x: hidden;
-  width: 100vw;
+  scrollbar-gutter: stable;
+  width: 100%;
 
   @media all and ($mobile) {
     scroll-padding-top: 4rem;

@@ -240,21 +240,28 @@ export function renderPage(
   } = components
   const Header = HeaderConstructor()
   const Body = BodyConstructor()
+  const hasLeft = left.length > 0
+  const hasRight = right.length > 0
+  const layoutClass = !hasLeft && !hasRight ? "layout-no-sidebars" : ""
 
-  const LeftComponent = (
+  const LeftComponent = hasLeft ? (
     <div class="left sidebar">
       {left.map((BodyComponent) => (
         <BodyComponent {...componentData} />
       ))}
     </div>
+  ) : (
+    <></>
   )
 
-  const RightComponent = (
+  const RightComponent = hasRight ? (
     <div class="right sidebar">
       {right.map((BodyComponent) => (
         <BodyComponent {...componentData} />
       ))}
     </div>
+  ) : (
+    <></>
   )
 
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
@@ -263,7 +270,7 @@ export function renderPage(
     <html lang={lang} dir={direction}>
       <Head {...componentData} />
       <body data-slug={slug}>
-        <div id="quartz-root" class="page">
+        <div id="quartz-root" class={`page ${layoutClass}`.trim()}>
           <Body {...componentData}>
             {LeftComponent}
             <div class="center">
@@ -280,7 +287,6 @@ export function renderPage(
                 </div>
               </div>
               <Content {...componentData} />
-              <hr />
               <div class="page-footer">
                 {afterBody.map((BodyComponent) => (
                   <BodyComponent {...componentData} />

@@ -7,27 +7,30 @@ import { i18n } from "../i18n"
 
 export interface SearchOptions {
   enablePreview: boolean
+  showLabel: boolean
 }
 
 const defaultOptions: SearchOptions = {
   enablePreview: true,
+  showLabel: true,
 }
 
 export default ((userOpts?: Partial<SearchOptions>) => {
   const Search: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const opts = { ...defaultOptions, ...userOpts }
     const searchPlaceholder = i18n(cfg.locale).components.search.searchBarPlaceholder
+    const searchTitle = i18n(cfg.locale).components.search.title
     return (
       <div class={classNames(displayClass, "search")}>
-        <button class="search-button">
+        <button class="search-button" aria-label={searchTitle} title={searchTitle}>
           <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7">
-            <title>Search</title>
+            <title>{searchTitle}</title>
             <g class="search-path" fill="none">
               <path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4" />
               <circle cx="8" cy="8" r="7" />
             </g>
           </svg>
-          <p>{i18n(cfg.locale).components.search.title}</p>
+          {opts.showLabel && <p>{searchTitle}</p>}
         </button>
         <div class="search-container">
           <div class="search-space">
