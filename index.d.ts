@@ -9,6 +9,9 @@ interface CustomEventMap {
   nav: CustomEvent<{ url: FullSlug }>
   themechange: CustomEvent<{ theme: "light" | "dark" }>
   readermodechange: CustomEvent<{ mode: "on" | "off" }>
+  openAIChat: CustomEvent<{}>
+  closeAIChat: CustomEvent<{}>
+  askAIChat: CustomEvent<{ prompt?: string; selectedText?: string }>
 }
 
 type ContentIndex = Record<FullSlug, ContentDetails>

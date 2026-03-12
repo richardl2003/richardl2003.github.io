@@ -30,8 +30,10 @@ import FeaturedWriting from "./FeaturedWriting"
 import NewsletterPanel from "./NewsletterPanel"
 import ConnectionsPanel from "./ConnectionsPanel"
 import PersonalFooter from "./PersonalFooter"
+import AIChatShell from "./AIChatShell"
 
 export {
+  AIChatShell,
   ArticleTitle,
   Content,
   TagContent,

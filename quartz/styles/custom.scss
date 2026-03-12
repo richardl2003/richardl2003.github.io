@@ -99,6 +99,35 @@ label {
   grid-column: 3;
 }
 
+.site-header__ask-ai {
+  min-height: 2rem;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--secondary) 18%, var(--lightgray) 82%);
+  background: color-mix(in srgb, var(--light) 90%, white 10%);
+  color: var(--secondary);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--secondary) 32%, var(--lightgray) 68%);
+    background: color-mix(in srgb, var(--secondary) 10%, var(--light) 90%);
+    color: var(--secondary);
+    box-shadow: 0 10px 24px rgba(32, 24, 17, 0.08);
+  }
+}
+
+body.ai-chat-open .site-header__ask-ai {
+  border-color: color-mix(in srgb, var(--secondary) 34%, var(--lightgray) 66%);
+  background: color-mix(in srgb, var(--secondary) 12%, var(--light) 88%);
+}
+
 .site-header .search {
   min-width: auto;
   max-width: none;
@@ -156,6 +185,10 @@ label {
 
   .site-header__utilities {
     grid-area: utilities;
+  }
+
+  .site-header__ask-ai {
+    display: none;
   }
 
   .site-header__nav {
