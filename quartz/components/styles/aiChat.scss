@@ -284,6 +284,7 @@ html[data-ai-chat-resizing="true"] {
 }
 
 .ai-chat-footer {
+  box-sizing: border-box;
   display: grid;
   gap: 0.7rem;
   padding: 0 1rem 1rem;
