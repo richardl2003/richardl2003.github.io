@@ -13,6 +13,7 @@ export const sharedPageComponents: SharedLayout = {
       ],
     }),
   ],
+  assistant: [Component.AIChatShell()],
   afterBody: [
     Component.ConditionalRender({
       component: Component.TagList(),
@@ -35,7 +36,6 @@ export const sharedPageComponents: SharedLayout = {
           Boolean(page.fileData.slug?.startsWith("updates/")) ||
           Boolean(page.fileData.slug?.startsWith("resources/"))),
     }),
-    Component.AIChatShell(),
   ],
   footer: Component.PersonalFooter({
     links: {

@@ -43,6 +43,7 @@ export default ((opts?: SiteHeaderOptions) => {
               class="site-header__ask-ai"
               type="button"
               aria-haspopup="dialog"
+              aria-controls="ai-chat-panel"
               aria-expanded="false"
               data-open-ai-chat=""
             >

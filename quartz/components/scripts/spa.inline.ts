@@ -101,11 +101,9 @@ async function _navigate(url: URL, isBack: boolean = false) {
   announcer.dataset.persist = ""
   html.body.appendChild(announcer)
 
-  // morph body — preserve chat state classes that are added dynamically
-  const chatOpen = document.body.classList.contains("ai-chat-open")
+  // morph body — preserve dynamic assistant thread styling on the new body element
   const chatHasThread = document.body.classList.contains("ai-chat-has-thread")
   micromorph(document.body, html.body)
-  if (chatOpen) document.body.classList.add("ai-chat-open")
   if (chatHasThread) document.body.classList.add("ai-chat-has-thread")
 
   // scroll into place and add history

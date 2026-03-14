@@ -4,10 +4,16 @@ export interface AIChatShellOptions {
   label: string
   placeholder: string
   desktopWidth: number
+  desktopMinWidth: number
+  desktopMaxWidth: number
   storageKey: string
+  uiOpenStorageKey: string
+  uiWidthStorageKey: string
   enableMockResponses: boolean
   enableSelectionContext: boolean
 }
+
+export const desktopAIChatBreakpoint = 1200
 
 export type ChatRole = "user" | "assistant" | "system"
 
@@ -50,9 +56,23 @@ export const defaultAIChatShellOptions: AIChatShellOptions = {
   label: "Ask Richard",
   placeholder: "Ask about this page...",
   desktopWidth: 384,
+  desktopMinWidth: 368,
+  desktopMaxWidth: 576,
   storageKey: "ai-chat-shell:v1",
+  uiOpenStorageKey: "ai-chat-shell:ui-open:v1",
+  uiWidthStorageKey: "ai-chat-shell:ui-width:v1",
   enableMockResponses: true,
   enableSelectionContext: true,
+}
+
+export function clampAIChatWidth(
+  width: number | null | undefined,
+  config: Pick<AIChatShellOptions, "desktopWidth" | "desktopMinWidth" | "desktopMaxWidth">,
+) {
+  const fallback = config.desktopWidth
+  const candidate = Number.isFinite(width) ? Number(width) : fallback
+
+  return Math.min(config.desktopMaxWidth, Math.max(config.desktopMinWidth, candidate))
 }
 
 type PageSection = "home" | "posts" | "updates" | "resources" | "generic"
@@ -168,14 +188,15 @@ function normalizeMessage(message: unknown): ChatMessage | null {
 
   const normalizedMessage: ChatMessage = {
     id: candidate.id,
-    role:
-      candidate.role === "assistant" || candidate.role === "system" ? candidate.role : "user",
+    role: candidate.role === "assistant" || candidate.role === "system" ? candidate.role : "user",
     content: candidate.content,
     timestamp: candidate.timestamp,
   }
 
   const contextQuote =
-    typeof candidate.contextQuote === "string" ? serializeSelectedText(candidate.contextQuote) : undefined
+    typeof candidate.contextQuote === "string"
+      ? serializeSelectedText(candidate.contextQuote)
+      : undefined
   if (contextQuote) {
     normalizedMessage.contextQuote = contextQuote
   }
@@ -220,14 +241,18 @@ export function deserializeChatSessionState(raw: string | null | undefined): Cha
   try {
     const parsed = JSON.parse(raw) as Partial<ChatSessionState>
     const messages = Array.isArray(parsed.messages)
-      ? parsed.messages.map(normalizeMessage).filter((message): message is ChatMessage => message !== null)
+      ? parsed.messages
+          .map(normalizeMessage)
+          .filter((message): message is ChatMessage => message !== null)
       : []
 
     return createEmptyChatSessionState({
       isOpen: parsed.isOpen === true,
       draft: typeof parsed.draft === "string" ? parsed.draft : "",
       selectedText:
-        typeof parsed.selectedText === "string" ? serializeSelectedText(parsed.selectedText) : undefined,
+        typeof parsed.selectedText === "string"
+          ? serializeSelectedText(parsed.selectedText)
+          : undefined,
       messages,
     })
   } catch {

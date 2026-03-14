@@ -1,5 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 // @ts-ignore
+import beforeScript from "./scripts/aiChat.before.inline"
+// @ts-ignore
 import script from "./scripts/aiChat.inline"
 import style from "./styles/aiChat.scss"
 import { classNames } from "../util/lang"
@@ -34,7 +36,12 @@ export default ((userOpts?: Partial<AIChatShellOptions>) => {
         data-title={title}
         data-config={JSON.stringify(opts)}
       >
-        <button class="ai-chat-mobile-launcher" aria-label={`${opts.label} launcher`} aria-expanded="false">
+        <button
+          class="ai-chat-mobile-launcher"
+          aria-label={`${opts.label} launcher`}
+          aria-controls="ai-chat-panel"
+          aria-expanded="false"
+        >
           <span class="ai-chat-launcher-icon">
             <SparkIcon />
           </span>
@@ -42,70 +49,84 @@ export default ((userOpts?: Partial<AIChatShellOptions>) => {
 
         <div class="ai-chat-backdrop"></div>
 
-        <section class="ai-chat-panel" aria-hidden="true">
-          <div class="ai-chat-panel-inner">
-            <header class="ai-chat-header">
-              <div class="ai-chat-header-copy">
-                <p class="ai-chat-kicker">Prototype mode</p>
-                <h3>{opts.label}</h3>
-              </div>
-              <div class="ai-chat-header-actions">
-                <div class="ai-chat-info-wrap">
-                  <button class="ai-chat-info-button" aria-label="Chat shell information" type="button">
-                    i
+        <div class="ai-chat-rail">
+          <div class="ai-chat-resize-handle" aria-hidden="true"></div>
+
+          <section
+            class="ai-chat-panel"
+            id="ai-chat-panel"
+            aria-hidden="true"
+            aria-label={opts.label}
+          >
+            <div class="ai-chat-panel-inner">
+              <header class="ai-chat-header">
+                <div class="ai-chat-header-copy">
+                  <p class="ai-chat-kicker">Prototype mode</p>
+                  <h3>{opts.label}</h3>
+                </div>
+                <div class="ai-chat-header-actions">
+                  <div class="ai-chat-info-wrap">
+                    <button
+                      class="ai-chat-info-button"
+                      aria-label="Chat shell information"
+                      type="button"
+                    >
+                      i
+                    </button>
+                    <div class="ai-chat-info-popover" hidden>
+                      <p>
+                        This is a UI-first assistant shell. Messages stay in this session and no
+                        live model is connected yet.
+                      </p>
+                    </div>
+                  </div>
+                  <button class="ai-chat-reset-button" aria-label="Reset chat" type="button">
+                    Reset
                   </button>
-                  <div class="ai-chat-info-popover" hidden>
-                    <p>
-                      This is a UI-first assistant shell. Messages stay in this session and no live
-                      model is connected yet.
-                    </p>
+                  <button class="ai-chat-close-button" aria-label="Close chat" type="button">
+                    Close
+                  </button>
+                </div>
+              </header>
+
+              <div class="ai-chat-body">
+                <div class="ai-chat-empty-state">
+                  <p class="ai-chat-greeting">{greeting}</p>
+                  <div class="ai-chat-suggestions">
+                    {prompts.map((prompt) => (
+                      <button class="ai-chat-prompt" data-ai-chat-prompt={prompt} type="button">
+                        {prompt}
+                      </button>
+                    ))}
                   </div>
                 </div>
-                <button class="ai-chat-reset-button" aria-label="Reset chat" type="button">
-                  Reset
-                </button>
-                <button class="ai-chat-close-button" aria-label="Close chat" type="button">
-                  Close
-                </button>
-              </div>
-            </header>
 
-            <div class="ai-chat-body">
-              <div class="ai-chat-empty-state">
-                <p class="ai-chat-greeting">{greeting}</p>
-                <div class="ai-chat-suggestions">
-                  {prompts.map((prompt) => (
-                    <button class="ai-chat-prompt" data-ai-chat-prompt={prompt} type="button">
-                      {prompt}
-                    </button>
-                  ))}
+                <div class="ai-chat-messages" role="log" aria-live="polite"></div>
+              </div>
+
+              <footer class="ai-chat-footer">
+                <div class="ai-chat-context"></div>
+                <div class="ai-chat-input-row">
+                  <textarea
+                    class="ai-chat-input"
+                    rows={1}
+                    placeholder={opts.placeholder}
+                    aria-label={opts.placeholder}
+                  />
+                  <button class="ai-chat-send-button" type="button" aria-label="Send message">
+                    Send
+                  </button>
                 </div>
-              </div>
-
-              <div class="ai-chat-messages" role="log" aria-live="polite"></div>
+              </footer>
             </div>
-
-            <footer class="ai-chat-footer">
-              <div class="ai-chat-context"></div>
-              <div class="ai-chat-input-row">
-                <textarea
-                  class="ai-chat-input"
-                  rows={1}
-                  placeholder={opts.placeholder}
-                  aria-label={opts.placeholder}
-                />
-                <button class="ai-chat-send-button" type="button" aria-label="Send message">
-                  Send
-                </button>
-              </div>
-            </footer>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     )
   }
 
   AIChatShell.css = style
+  AIChatShell.beforeDOMLoaded = beforeScript
   AIChatShell.afterDOMLoaded = script
 
   return AIChatShell
