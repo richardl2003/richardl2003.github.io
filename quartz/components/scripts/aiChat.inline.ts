@@ -145,9 +145,8 @@ function setupAIChat(root: HTMLElement) {
   const input = root.querySelector(".ai-chat-input") as HTMLTextAreaElement | null
   const sendButton = root.querySelector(".ai-chat-send-button") as HTMLButtonElement | null
   const closeButton = root.querySelector(".ai-chat-close-button") as HTMLButtonElement | null
-  const resetButton = root.querySelector(".ai-chat-reset-button") as HTMLButtonElement | null
-  const infoButton = root.querySelector(".ai-chat-info-button") as HTMLButtonElement | null
-  const infoPopover = root.querySelector(".ai-chat-info-popover") as HTMLElement | null
+  const expandButton = root.querySelector(".ai-chat-expand-button") as HTMLButtonElement | null
+  const attachButton = root.querySelector(".ai-chat-attach-button") as HTMLButtonElement | null
   const externalTriggers = Array.from(
     document.querySelectorAll<HTMLButtonElement>("[data-open-ai-chat]"),
   )
@@ -166,9 +165,8 @@ function setupAIChat(root: HTMLElement) {
     !input ||
     !sendButton ||
     !closeButton ||
-    !resetButton ||
-    !infoButton ||
-    !infoPopover
+    !expandButton ||
+    !attachButton
   ) {
     return
   }
@@ -186,9 +184,7 @@ function setupAIChat(root: HTMLElement) {
   const inputEl = input
   const sendButtonEl = sendButton
   const closeButtonEl = closeButton
-  const resetButtonEl = resetButton
-  const infoButtonEl = infoButton
-  const infoPopoverEl = infoPopover
+  const expandButtonEl = expandButton
 
   const html = document.documentElement
   const mediaQueryList = window.matchMedia(desktopMediaQuery)
@@ -206,7 +202,6 @@ function setupAIChat(root: HTMLElement) {
     isOpen: html.dataset.aiChatState === "open",
   }
   let isThinking = false
-  let infoOpen = false
   let activeResize:
     | {
         pointerId: number
@@ -286,11 +281,6 @@ function setupAIChat(root: HTMLElement) {
     })
   }
 
-  function renderInfoPopover() {
-    infoPopoverEl.hidden = !infoOpen
-    infoButtonEl.setAttribute("aria-expanded", String(infoOpen))
-  }
-
   function renderContextChip() {
     contextContainerEl.replaceChildren()
 
@@ -326,7 +316,6 @@ function setupAIChat(root: HTMLElement) {
     sendButtonEl.disabled = state.draft.trim().length === 0 || isThinking
     renderContextChip()
     renderMessages()
-    renderInfoPopover()
     autoResizeInput()
     applyUIState()
   }
@@ -338,9 +327,6 @@ function setupAIChat(root: HTMLElement) {
 
     if (nextIsOpen) {
       focusInput()
-    } else if (infoOpen) {
-      infoOpen = false
-      renderInfoPopover()
     }
   }
 
@@ -417,22 +403,6 @@ function setupAIChat(root: HTMLElement) {
     }
     saveState()
     setOpen(true)
-  }
-
-  function handleDocumentClick(event: MouseEvent) {
-    const target = event.target as Node | null
-    if (!target) {
-      return
-    }
-
-    if (
-      !infoPopoverEl.hidden &&
-      !infoPopoverEl.contains(target) &&
-      !infoButtonEl.contains(target)
-    ) {
-      infoOpen = false
-      renderInfoPopover()
-    }
   }
 
   function handleKeydown(event: KeyboardEvent) {
@@ -512,17 +482,8 @@ function setupAIChat(root: HTMLElement) {
 
   const closeHandler = () => setOpen(false)
   const backdropHandler = () => setOpen(false)
-  const resetHandler = () => {
-    state = resetChatSessionState(state.isOpen)
-    saveState()
-    render()
-    if (state.isOpen) {
-      focusInput()
-    }
-  }
-  const infoHandler = () => {
-    infoOpen = !infoOpen
-    renderInfoPopover()
+  const expandHandler = () => {
+    // No-op for now — future fullscreen toggle
   }
   const inputHandler = () => handleInput()
   const openEventHandler = () => openFromSelection()
@@ -551,12 +512,10 @@ function setupAIChat(root: HTMLElement) {
   mobileLauncherEl.addEventListener("click", mobileLauncherHandler)
   closeButtonEl.addEventListener("click", closeHandler)
   backdropEl.addEventListener("click", backdropHandler)
-  resetButtonEl.addEventListener("click", resetHandler)
-  infoButtonEl.addEventListener("click", infoHandler)
+  expandButtonEl.addEventListener("click", expandHandler)
   inputEl.addEventListener("input", inputHandler)
   sendButtonEl.addEventListener("click", sendHandler)
   resizeHandleEl.addEventListener("pointerdown", handleResizePointerDown)
-  document.addEventListener("click", handleDocumentClick)
   document.addEventListener("keydown", handleKeydown)
   document.addEventListener("openAIChat", openEventHandler)
   document.addEventListener("closeAIChat", closeEventHandler)
@@ -571,14 +530,12 @@ function setupAIChat(root: HTMLElement) {
   window.addCleanup(() => mobileLauncherEl.removeEventListener("click", mobileLauncherHandler))
   window.addCleanup(() => closeButtonEl.removeEventListener("click", closeHandler))
   window.addCleanup(() => backdropEl.removeEventListener("click", backdropHandler))
-  window.addCleanup(() => resetButtonEl.removeEventListener("click", resetHandler))
-  window.addCleanup(() => infoButtonEl.removeEventListener("click", infoHandler))
+  window.addCleanup(() => expandButtonEl.removeEventListener("click", expandHandler))
   window.addCleanup(() => inputEl.removeEventListener("input", inputHandler))
   window.addCleanup(() => sendButtonEl.removeEventListener("click", sendHandler))
   window.addCleanup(() =>
     resizeHandleEl.removeEventListener("pointerdown", handleResizePointerDown),
   )
-  window.addCleanup(() => document.removeEventListener("click", handleDocumentClick))
   window.addCleanup(() => document.removeEventListener("keydown", handleKeydown))
   window.addCleanup(() => document.removeEventListener("openAIChat", openEventHandler))
   window.addCleanup(() => document.removeEventListener("closeAIChat", closeEventHandler))

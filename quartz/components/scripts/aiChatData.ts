@@ -54,7 +54,7 @@ export interface ChatTransport {
 
 export const defaultAIChatShellOptions: AIChatShellOptions = {
   label: "Ask Richard",
-  placeholder: "Ask about this page...",
+  placeholder: "Ask a question...",
   desktopWidth: 384,
   desktopMinWidth: 368,
   desktopMaxWidth: 576,
