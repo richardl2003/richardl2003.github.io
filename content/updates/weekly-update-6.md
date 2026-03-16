@@ -48,11 +48,11 @@ One statement within the book [[The Happiness Project]] by Gretchen Rubin which 
 
 I believe that what we value shows up in how we spend our time each day. This speaks volumes to what each of us cares about most.
 
-When I look at this year honestly, here are things that I'm going to dedicate more time towards:
+When I look at this year honestly, here are things that I'm going to dedicate more time towards: ^0b69d1
 - **Time with family**
 - **Health**
 - **Reading**
-- **Managing my Expectations**
+- **Managing my Expectations** ^ba68b6
 - **Comfort with Uncertainty** (both with taking on more ambitious scoped projects at work and also experiences like my culinary class)
 
 None of these are new ideas. Buffett and Munger built their frameworks around things that wouldn't need to change when the world looked different. I think values work the same way. It's to prioritize your time in ways that you care about and actually spending that time meaningfully.

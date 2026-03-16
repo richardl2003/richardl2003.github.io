@@ -19,9 +19,9 @@ Even with all of this, comparison doesn’t disappear.
 
 It shows up quietly: when hanging out with friends, when scrolling online, when thoughts naturally drift toward compensation, company names, or what someone is “doing next.” None of this is intentional (I'm guilty of this myself). But over time, these signals add up.
 
-I’ve come to think of this as *quiet hierarchies*.
+I’ve come to think of this as *quiet hierarchies*. ^901ea6
 
-We don’t explicitly rank each other, but we do it implicitly. Certain roles sound more impressive. Certain companies carry more weight. Certain paths feel more “successful,” and we often assume that automatically means someone is doing “well.”
+We don’t explicitly rank each other, but we do it implicitly. Certain roles sound more impressive. Certain companies carry more weight. Certain paths feel more “successful,” and we often assume that automatically means someone is doing “well.” ^7fb87a
 
 I found grounding and reminding myself that success is relative, not universal, has led me to not viewing situations through this quiet hierarchy.
 
