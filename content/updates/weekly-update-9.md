@@ -42,7 +42,7 @@ If I really got to talk to my younger self, I would try to give him something he
 ## Why I Write
 As much as I can now see what younger Richard couldn't, I also assume there is some future version of me, maybe Richard in 2053 (I'd be 50 years old!), who would look back at the person writing this and laugh a little too. Not in a cruel way, but in the way you laugh when you realize how much someone still had not experienced, how much they still couldn't see, and how seriously they mistook partial awareness for the whole picture.
 
-An idea from [The Courage to be Disliked (Matt D'Avella's analysis)]([https://www.youtube.com/watch?v=-DZofD0YN0A](https://youtu.be/-DZofD0YN0A?t=532)) that I love is that life isn't a line from birth till death. It's a series of small dots because we shouldn't be looking at the future for some specific finish line. Life is a collection of present moments. 
+An idea from [The Courage to be Disliked (Matt D'Avella's analysis)](https://youtu.be/-DZofD0YN0A?t=532) that I love is that life isn't a line from birth till death. It's a series of small dots because we shouldn't be looking at the future for some specific finish line. Life is a collection of present moments. 
 
 Reflecting and documenting my values and thoughts is my way of capturing what life looks like from this specific dot. That is one reason I care about writing these weekly updates. One day I want to look back at these entries and see not only what I believed, but what I had not yet learned how to notice. 
 ## Interesting Ideas
