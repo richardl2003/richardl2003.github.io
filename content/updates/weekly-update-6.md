@@ -42,6 +42,8 @@ I'm currently working on bringing up desire whenever I want to buy something new
 
 ## Values
 
+^e74e80
+
 One statement within the book [[The Happiness Project]] by Gretchen Rubin which I just started recently stood out to me:
 
 >*“What you do every day matters more than what you do once in a while.”*

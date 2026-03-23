@@ -6,7 +6,7 @@ tags:
 ---
 ## Default Perspective
 
-I've been realizing that my default perspective is to think in terms of ***what*** and ***how*** long before I think carefully enough about ***why***. This is especially true for technical folks. I get excited about all the ways something could be built. What I don't always do quickly enough is step back and ask what all of that is actually in service of.
+I've been realizing that my default perspective is to think in terms of ***what*** and ***how*** long before I think carefully enough about ***why***. This is especially true for technical folks. I get excited about all the ways something could be built. What I don't always do quickly enough is step back and ask what all of that is actually in service of. ^9d1ec0
 
 At work, I've been helping build an [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) server that lets employees interact with the services my team maintains through a chat interface. Think of MCP as a USB-C connector to an LLM like ChatGPT/Claude to allow it to understand domain specific services.
 
