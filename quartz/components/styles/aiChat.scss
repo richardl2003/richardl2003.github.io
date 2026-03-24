@@ -11,8 +11,8 @@ html[data-ai-chat-resizing="true"] {
 
 .ai-chat-shell {
   --ai-chat-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --ai-chat-border: color-mix(in srgb, var(--lightgray) 60%, white 40%);
-  --ai-chat-surface: var(--light);
+  --ai-chat-border: color-mix(in srgb, var(--gray) 50%, var(--lightgray) 50%);
+  --ai-chat-surface: color-mix(in srgb, var(--lightgray) 18%, var(--light) 82%);
   --ai-chat-muted: color-mix(in srgb, var(--lightgray) 70%, white 30%);
   position: relative;
   display: block;
@@ -95,8 +95,8 @@ html[data-ai-chat-resizing="true"] {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--light);
-  border: 1px solid var(--ai-chat-border);
+  background: var(--ai-chat-surface);
+  border: 1.5px solid var(--ai-chat-border);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -450,10 +450,10 @@ html[data-ai-chat-resizing="true"] {
     border-top: none;
     border-right: none;
     border-bottom: none;
-    border-left: 1px solid color-mix(in srgb, var(--lightgray) 72%, white 28%);
+    border-left: 1.5px solid var(--ai-chat-border);
     box-shadow: none;
     border-radius: 0;
-    background: var(--light);
+    background: var(--ai-chat-surface);
   }
 
   .ai-chat-resize-handle {
@@ -465,7 +465,7 @@ html[data-ai-chat-resizing="true"] {
     width: 1px;
     z-index: 2;
     cursor: col-resize;
-    background: color-mix(in srgb, var(--lightgray) 78%, white 22%);
+    background: var(--ai-chat-border);
 
     &::after {
       content: "";
@@ -494,10 +494,8 @@ html[data-ai-chat-resizing="true"] {
 
   .ai-chat-rail {
     position: fixed;
-    left: 1rem;
-    right: 1rem;
-    bottom: max(1rem, env(safe-area-inset-bottom, 1rem));
-    height: min(72vh, 40rem);
+    inset: 0;
+    height: 100%;
     z-index: 68;
     opacity: 0;
     transform: translateY(1rem);
@@ -518,7 +516,7 @@ html[data-ai-chat-resizing="true"] {
   }
 
   .ai-chat-panel-inner {
-    border-radius: 20px;
-    box-shadow: var(--ai-chat-shadow);
+    border-radius: 0;
+    box-shadow: none;
   }
 }
