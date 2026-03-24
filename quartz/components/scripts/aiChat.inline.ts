@@ -7,7 +7,6 @@ import {
   createEmptyChatSessionState,
   deserializeChatSessionState,
   desktopAIChatBreakpoint,
-  getGreeting,
   getStarterPrompts,
   resetChatSessionState,
   serializeChatSessionState,
@@ -59,15 +58,28 @@ function captureSelectedText() {
   return serializeSelectedText(window.getSelection?.()?.toString())
 }
 
+let mobileScrollY = 0
+
 function setMobileScrollLock(isLocked: boolean) {
+  const html = document.documentElement
+
   if (isDesktopViewport()) {
+    html.classList.remove("ai-chat-scroll-locked")
     document.body.style.overflow = ""
-    document.documentElement.style.overflow = ""
+    document.body.style.top = ""
+    html.style.overflow = ""
     return
   }
 
-  document.body.style.overflow = isLocked ? "hidden" : ""
-  document.documentElement.style.overflow = isLocked ? "hidden" : ""
+  if (isLocked) {
+    mobileScrollY = window.scrollY
+    document.body.style.top = `-${mobileScrollY}px`
+    html.classList.add("ai-chat-scroll-locked")
+  } else {
+    html.classList.remove("ai-chat-scroll-locked")
+    document.body.style.top = ""
+    window.scrollTo(0, mobileScrollY)
+  }
 }
 
 function createContextChip(selectedText: string) {
@@ -138,7 +150,6 @@ function setupAIChat(root: HTMLElement) {
   const resizeHandle = root.querySelector(".ai-chat-resize-handle") as HTMLDivElement | null
   const panel = root.querySelector(".ai-chat-panel") as HTMLElement | null
   const emptyState = root.querySelector(".ai-chat-empty-state") as HTMLElement | null
-  const greeting = root.querySelector(".ai-chat-greeting") as HTMLParagraphElement | null
   const promptsContainer = root.querySelector(".ai-chat-suggestions") as HTMLElement | null
   const messages = root.querySelector(".ai-chat-messages") as HTMLElement | null
   const contextContainer = root.querySelector(".ai-chat-context") as HTMLElement | null
@@ -146,7 +157,8 @@ function setupAIChat(root: HTMLElement) {
   const sendButton = root.querySelector(".ai-chat-send-button") as HTMLButtonElement | null
   const closeButton = root.querySelector(".ai-chat-close-button") as HTMLButtonElement | null
   const expandButton = root.querySelector(".ai-chat-expand-button") as HTMLButtonElement | null
-  const attachButton = root.querySelector(".ai-chat-attach-button") as HTMLButtonElement | null
+  const expandIcon = root.querySelector(".ai-chat-expand-icon") as HTMLElement | null
+  const collapseIcon = root.querySelector(".ai-chat-collapse-icon") as HTMLElement | null
   const externalTriggers = Array.from(
     document.querySelectorAll<HTMLButtonElement>("[data-open-ai-chat]"),
   )
@@ -158,7 +170,6 @@ function setupAIChat(root: HTMLElement) {
     !resizeHandle ||
     !panel ||
     !emptyState ||
-    !greeting ||
     !promptsContainer ||
     !messages ||
     !contextContainer ||
@@ -166,7 +177,8 @@ function setupAIChat(root: HTMLElement) {
     !sendButton ||
     !closeButton ||
     !expandButton ||
-    !attachButton
+    !expandIcon ||
+    !collapseIcon
   ) {
     return
   }
@@ -177,7 +189,6 @@ function setupAIChat(root: HTMLElement) {
   const resizeHandleEl = resizeHandle
   const panelEl = panel
   const emptyStateEl = emptyState
-  const greetingEl = greeting
   const promptsContainerEl = promptsContainer
   const messagesEl = messages
   const contextContainerEl = contextContainer
@@ -185,6 +196,8 @@ function setupAIChat(root: HTMLElement) {
   const sendButtonEl = sendButton
   const closeButtonEl = closeButton
   const expandButtonEl = expandButton
+  const expandIconEl = expandIcon
+  const collapseIconEl = collapseIcon
 
   const html = document.documentElement
   const mediaQueryList = window.matchMedia(desktopMediaQuery)
@@ -202,6 +215,8 @@ function setupAIChat(root: HTMLElement) {
     isOpen: html.dataset.aiChatState === "open",
   }
   let isThinking = false
+  let isExpanded = false
+  let preExpandWidth = panelWidth
   let activeResize:
     | {
         pointerId: number
@@ -245,7 +260,6 @@ function setupAIChat(root: HTMLElement) {
   }
 
   function syncPromptContent() {
-    greetingEl.textContent = getGreeting({ slug, title })
     const prompts = getStarterPrompts({ slug, title })
     promptsContainerEl.replaceChildren(
       ...prompts.map((prompt) => {
@@ -272,6 +286,11 @@ function setupAIChat(root: HTMLElement) {
       inputEl.focus()
       const valueLength = inputEl.value.length
       inputEl.setSelectionRange(valueLength, valueLength)
+
+      // On mobile, delay scroll-to-bottom to let the keyboard finish animating
+      if (!isDesktopViewport()) {
+        setTimeout(() => scrollMessagesToBottom(), 350)
+      }
     })
   }
 
@@ -317,6 +336,7 @@ function setupAIChat(root: HTMLElement) {
     renderContextChip()
     renderMessages()
     autoResizeInput()
+    syncExpandUI()
     applyUIState()
   }
 
@@ -437,6 +457,8 @@ function setupAIChat(root: HTMLElement) {
 
     const delta = activeResize.startX - event.clientX
     panelWidth = clampAIChatWidth(activeResize.startWidth + delta, config)
+    isExpanded = false
+    syncExpandUI()
     applyUIState()
   }
 
@@ -482,8 +504,28 @@ function setupAIChat(root: HTMLElement) {
 
   const closeHandler = () => setOpen(false)
   const backdropHandler = () => setOpen(false)
+  function syncExpandUI() {
+    expandIconEl.hidden = isExpanded
+    collapseIconEl.hidden = !isExpanded
+    expandButtonEl.setAttribute("aria-label", isExpanded ? "Collapse chat" : "Expand chat")
+  }
+
   const expandHandler = () => {
-    // No-op for now — future fullscreen toggle
+    if (!isDesktopViewport()) {
+      return
+    }
+
+    if (isExpanded) {
+      panelWidth = preExpandWidth
+      isExpanded = false
+    } else {
+      preExpandWidth = panelWidth
+      panelWidth = config.desktopMaxWidth
+      isExpanded = true
+    }
+
+    syncExpandUI()
+    applyUIState()
   }
   const inputHandler = () => handleInput()
   const openEventHandler = () => openFromSelection()
@@ -522,6 +564,39 @@ function setupAIChat(root: HTMLElement) {
   document.addEventListener("askAIChat", handleAskEvent)
   mediaQueryList.addEventListener("change", handleViewportChange)
 
+  // Track visual viewport height on mobile for keyboard-aware resizing
+  function handleVisualViewportResize() {
+    if (isDesktopViewport() || !window.visualViewport) {
+      html.style.removeProperty("--ai-chat-viewport-height")
+      return
+    }
+
+    const vh = window.visualViewport.height
+    html.style.setProperty("--ai-chat-viewport-height", `${vh}px`)
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", handleVisualViewportResize)
+    window.visualViewport.addEventListener("scroll", handleVisualViewportResize)
+  }
+
+  // Prevent background touchmove when chat is open on mobile
+  function handleTouchMove(event: TouchEvent) {
+    if (!state.isOpen || isDesktopViewport()) {
+      return
+    }
+
+    // Allow scrolling inside the messages area
+    const target = event.target as HTMLElement
+    if (target.closest(".ai-chat-body")) {
+      return
+    }
+
+    event.preventDefault()
+  }
+
+  document.addEventListener("touchmove", handleTouchMove, { passive: false })
+
   window.addCleanup(() => {
     externalTriggerHandlers.forEach(({ trigger, handler }) => {
       trigger.removeEventListener("click", handler)
@@ -542,8 +617,16 @@ function setupAIChat(root: HTMLElement) {
   window.addCleanup(() => document.removeEventListener("askAIChat", handleAskEvent))
   window.addCleanup(() => mediaQueryList.removeEventListener("change", handleViewportChange))
   window.addCleanup(() => {
+    if (window.visualViewport) {
+      window.visualViewport.removeEventListener("resize", handleVisualViewportResize)
+      window.visualViewport.removeEventListener("scroll", handleVisualViewportResize)
+    }
+  })
+  window.addCleanup(() => document.removeEventListener("touchmove", handleTouchMove))
+  window.addCleanup(() => {
     stopResize()
     setMobileScrollLock(false)
+    html.style.removeProperty("--ai-chat-viewport-height")
   })
 }
 

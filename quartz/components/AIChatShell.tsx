@@ -8,7 +8,6 @@ import { classNames } from "../util/lang"
 import {
   AIChatShellOptions,
   defaultAIChatShellOptions,
-  getGreeting,
   getStarterPrompts,
 } from "./scripts/aiChatData"
 
@@ -40,10 +39,13 @@ function CloseIcon() {
   )
 }
 
-function PaperclipIcon() {
+function CollapseIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
+      <polyline points="4 14 10 14 10 20" />
+      <polyline points="20 10 14 10 14 4" />
+      <line x1="14" y1="10" x2="21" y2="3" />
+      <line x1="3" y1="21" x2="10" y2="14" />
     </svg>
   )
 }
@@ -63,7 +65,6 @@ export default ((userOpts?: Partial<AIChatShellOptions>) => {
     const slug = fileData.slug ?? "index"
     const title = fileData.frontmatter?.title ?? fileData.slug ?? "this page"
     const prompts = getStarterPrompts({ slug, title })
-    const greeting = getGreeting({ slug, title })
 
     return (
       <div
@@ -103,7 +104,8 @@ export default ((userOpts?: Partial<AIChatShellOptions>) => {
                 </div>
                 <div class="ai-chat-header-actions">
                   <button class="ai-chat-expand-button" aria-label="Expand chat" type="button">
-                    <ExpandIcon />
+                    <span class="ai-chat-expand-icon"><ExpandIcon /></span>
+                    <span class="ai-chat-collapse-icon" hidden><CollapseIcon /></span>
                   </button>
                   <button class="ai-chat-close-button" aria-label="Close chat" type="button">
                     <CloseIcon />
@@ -117,7 +119,6 @@ export default ((userOpts?: Partial<AIChatShellOptions>) => {
 
               <div class="ai-chat-body">
                 <div class="ai-chat-empty-state">
-                  <p class="ai-chat-greeting">{greeting}</p>
                   <div class="ai-chat-suggestions">
                     {prompts.map((prompt) => (
                       <button class="ai-chat-prompt" data-ai-chat-prompt={prompt} type="button">
@@ -140,9 +141,6 @@ export default ((userOpts?: Partial<AIChatShellOptions>) => {
                     aria-label={opts.placeholder}
                   />
                   <div class="ai-chat-input-actions">
-                    <button class="ai-chat-attach-button" type="button" aria-label="Attach file">
-                      <PaperclipIcon />
-                    </button>
                     <button class="ai-chat-send-button" type="button" aria-label="Send message">
                       <ArrowUpIcon />
                     </button>
