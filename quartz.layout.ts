@@ -8,8 +8,7 @@ export const sharedPageComponents: SharedLayout = {
     Component.SiteHeader({
       links: [
         { label: "About", href: "about" },
-        { label: "Tools", href: "resources/tools" },
-        { label: "Books", href: "resources/books" },
+        { label: "Ideas", href: "ideas" },
       ],
     }),
   ],
