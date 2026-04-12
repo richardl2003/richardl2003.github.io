@@ -5,6 +5,9 @@ description: A curated collection of interesting ideas from my weekly updates.
 
 A collection of interesting ideas, articles, and resources from my weekly updates.
 
+### Week 12: Closing Chapters
+![[weekly-update-12#Interesting Ideas]]
+
 ### Week 11: BAU
 ![[weekly-update-11#Interesting Ideas]]
 
