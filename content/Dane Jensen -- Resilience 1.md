@@ -1,0 +1,200 @@
+---
+created: 2026-05-16
+tags:
+  - note
+  - journal
+  - work
+  - keynote
+---
+## Definition of resilience
+- Responding from setbacks
+	- Analogy: How to rehab balance? 
+		- Approach one: how to how stable defensive posture 
+			- How to stand in a way were you won't get off balance
+		- Evolution
+			- Focus on how we respond and recover to being off balance
+			- The reason is that there are no postures strong enough that won't knock us off balance
+				- Can't build a thick skin for everything
+		- How do we stay centred as we get shoved off balanced? 
+- Performance on demand
+	- Can you perform when the pressure is highest (olympics example)
+		- Canada had talent, skills, and athletes ultimately performed well at events a year before the Olympic games but would "choke" at the real games (low conversion rates compared with other countries)
+	- Are we able to rise during the moments that matter? 
+
+## What challenges and pressures am I currently facing?
+- Impair my performance
+- Drain your physical energy
+	- Evenings when I don't get enough sleep 
+	- Adjusting from timezone differences when coming back home from Japan
+	- Getting back home late from evening hangouts (or having too many hangouts)
+	- Not having enough time to myself
+	- Winding down with devices
+- Emotionally exhaust you
+	- Feeling on "edge" about my dating situation
+	- We've been emotionally involved deeply over the past 3 years (on/off) due to religious differences
+	- I want to give us another shot again, she's just come back from being on exchange and travelling a lot
+	- We did limit a lot of contact during these past few months
+- Cause you anxiety
+	- Same situation as above
+	- I deleted Instagram (all other social medias except for LinkedIn and YouTube)
+		- Mainly because I'd get anxiety from seeing her Instagram posts
+		- Not because I don't want to see her happy, but they make me spiral 
+	- Right now I do have some anxiety from starting up contact with her
+		- Current thoughts creating anxiety
+			- I'm not sure how she feels about me
+			- Did she meet someone new during the past month? 
+			- Did she grow closer with some other guys?
+			- Did she forget about me? 
+			- Did she text someone else about landing back in Toronto but not me?
+		- Thoughts about the future
+			- Would she still be interested in having a conversation with me
+		- I think a lot of uncertainty about not knowing how she's been feeling the past 4 months, is just causing my head to spin and think in these hypothetical scenarios
+	- Why I want to rebuild with Jemima
+		- It is incredibly rare to grow authentically with someone
+		- "While becoming who I am today, you are my favourite person"
+		- We did our best to handle conflict, communicate, feel secure, navigate uncertainty
+		- We both know each other so well 
+		- Everyday life in a relationship is about these small things and this I'd value this connection/willingness over anything
+		- I don't want to give up on this without having a proper conversation about the future
+		- When I imagine who I want to do these little things, make decisions, grow with curiosity -> these are what matter long term to me
+		- She's really helped me to think more deeply about life, change my perspectives on careers, and inspired me to become better for us
+- Take away the fun
+- Keep you rushing
+
+## Tools for Resilience
+- Internal shift from a feeling of helplessness -> self efficacy (control)
+
+## What is pressure?
+- Energized state
+	- Physical, emotional, cognitive
+	- This is a double edged sword
+		- Exciting and Anxiety
+		- Motivating and Overwhelming
+	- World records
+		- They get set at Olympics due to having to perform under pressure
+- Sense of control can help us leverage pressure to feel more exciting/motivating rather than anxious/overwhelm
+	- When pressure feels like it's happening to us -> can get corrosive
+	- If we can act on the sources of pressure -> can feel energized
+
+## Domain Choices to build Control
+- Eliminate the stressor (modify the environment)
+- Physical resilience
+	- Aids mental resilience
+	- Avoiding neglect and take care of the basics
+		- Sleep
+			- Research from Nature: `fatigue alcohol and performance impairment nature `
+				- As people get more sleep deprived -> cognitive performance declines
+				- As people get more drunk -> cognitive performance declines
+				- 6 hours or less of sleep is equivalent to somebody of blood alcohol concentration 0.06 -> 0.08 in terms of cognitive performance
+					- Above the legal limit for driving a car
+			- There are seasons of life where getting adequate sleep is not possible
+		- Movement
+			- 30 minutes per day
+		- Nutrition
+- Relationships
+	- Metaphor
+		- When people go through disruption (change + pressure) we are circus performers between trapezes
+			- How are these people are to be 40 feet in the air not connected to anything?
+				- Train with a safety net
+				- They will get caught if they fall
+	- Our safety net comes from people who love us unconditionally
+	- Associate pressure with reaching out and building the safety net
+- Inner skills
+	- Mental model
+		- ![[Pasted image 20260518112833.png]]
+			- Centre is the self
+				- Self awareness is the biggest inner skill
+				- We can't manage ourselves without being aware
+			- Self is separate from the body, feelings, and mind 
+				- What we think, feel, and do
+				- Humans are given capacity to observe these things
+					- Notice thoughts (meta cognition), emotion, physiology
+				- Difference with animals
+					- They aren't able to reason -- they are wired to deal with stimulus by responding with an action
+					- This is where we least resilient through a pattern of stimulus/response
+				- We are at our most resilient when we feel pressure
+					- Step back and notice the impact of pressure
+					- From a position of observation, we have free will to choose how we respond
+					- Difference between being angry and noticing we are angry
+			- Perspective
+				- Definition: the way how we interpret a situation
+				- This is the one thing in which we have influence/control
+				- This starts in our head, but doesn't stay there
+					- The story we tell about a situation, we project onto the world
+					- "We don't see the world as it is, we see the world as I am"
+				- Approaches
+					- Power of positive thinking
+						- Can verge into toxic positivity
+							- "Everything is fine"
+							- Can be naive and not consider drawbacks
+					- Hardiness perspective
+						- People who had best outcomes through relentless change and disruption who chose to see what they were going through:
+							- Commitment
+								- "I choose to see this as interesting and important" vs "This is too stressful, I can't care and alienate"
+									- One question I have is that to build control, one of the 4 choices is to eliminate the stressor -- what is the difference here?
+							- Control
+								- Focus attention on what they control 
+							- Challenge
+								- Challenge we can rise vs a threat we protect ourselves
+			- Energy Management
+				- Be a thermostat rather than a thermometer
+					- Thermostats controls the temperature where as a thermometer read the temperature
+				- Challenge
+					- We are wired as thermometers
+					- Through our 5 senses, our central nervous system tries to adapt ourselves to the environment
+					- When dealing with a situation with uncertainty and importance
+						- There is a gas pedal that gets pressed (sympathetic nervous system) to ready ourselves for action
+						- As activation increases, our attention gets narrower
+						- This is hardwired into our biology and we can't counteract this
+				- What happens "in the tunnel"
+					- Miss relevant information
+						- e.g. we did an activity where there was a sheet of numbers from 1-100 in random order and we had to circle the numbers in sequence
+						- In the debrief, we were tasked to step back to write down all of our thoughts we had while doing this activity
+							- For high performers they respond with: "nothing, looking for numbers" -> flow state, focused on the task 
+							- Most of us hit a stumbling block and start talking to ourselves
+							- We become our own heckling (mind, feelings, body are not aligned)
+						- When we get stuck, thermostat creeps us, we miss information (couldn't see the numbers)
+						- Hard to see broader context, hold long term views, lose our expertise, environmental cues, disconfirming facts 
+							- In a job interview, we feel like our head is empty but then in retrospect after the interview we go "ohhh I should've said that"
+					- Reduced flexibility
+					- Become a more extreme version of ourself
+				- How we get out of the tunnel
+					- Mind, feelings, body are interlinked (we can pull them out of alignment)
+					- Mind
+						- Reframing
+							- Commitment, Control, Challenge
+						- Self talk
+						- Affirmation
+					- Body
+						- Breathing
+							- Not physically possible to have calm body and racing mind
+							- Calm body, the mind will follow
+						- Acting 'as if'
+					- Feelings
+						- Imagery
+						- Humour
+			- Imagination
+				- We run movies in our head
+				- Images we run, they are the most powerful way we communicate with ourselves
+					- What we imagine, goes into the mind, feeling, and body
+				- Physical
+					- Once an athlete knows what it feels like, if they have mental rehearsal in vivid detail, they get 85% of the benefit compared with physical rehearsal
+					- Be a goldfish - Ted Lasso
+						- Have short memories, don't want to overplay our failures
+					- We pay a physical price imagining uncertain futures that haven't happened yet
+						- Can be an additional weight
+			- North Star
+				- Line of sight from what we do everyday up to everything that bring meaning and purpose in our lives
+				- Meaning and purpose at work
+					- "If you love what you do, you'll never work a day in your life" is BS
+						- There is a reason why it's work
+						- There is a reason why we get paid
+						- Not sunshine and connection with purpose and meaning
+					- Meaning is not a constant thing, it happens in moments
+						- Example is having kids 
+							- 70-80% of the time parenting is a pain
+							- Majority of parenting is trying to make them do things they don't wanna do, stop what they do wanna do
+							- But there are moments where you are filled with positive emotion
+						- Life is ups and downs and it sometimes intersects with what really matters
+					- Can we increase the frequency of moments of meaning? 
+					- Do we notice and appreciate them when they occur?  

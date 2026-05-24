@@ -5,6 +5,14 @@ description: A curated collection of interesting ideas from my weekly updates.
 
 A collection of interesting ideas, articles, and resources from my weekly updates.
 
+### Week 15: Resilience
+
+![[weekly-update-15#Interesting Ideas]]
+
+### Week 14: Japan
+
+![[weekly-update-14#Interesting Ideas]]
+
 ### Week 13: Moneyball
 
 ![[weekly-update-13#Interesting Ideas]]
