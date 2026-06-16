@@ -12,6 +12,7 @@ export const sharedPageComponents: SharedLayout = {
       ],
     }),
   ],
+  assistant: [Component.AIChatShell()],
   afterBody: [
     Component.ConditionalRender({
       component: Component.TagList(),

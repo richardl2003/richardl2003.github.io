@@ -39,6 +39,16 @@ export default ((opts?: SiteHeaderOptions) => {
           <div class="site-header__utilities">
             <Search {...props} />
             <Darkmode {...props} />
+            <button
+              class="site-header__ask-ai"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="ai-chat-panel"
+              aria-expanded="false"
+              data-open-ai-chat=""
+            >
+              Ask Richard
+            </button>
           </div>
         </div>
       </div>

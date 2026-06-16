@@ -14,6 +14,7 @@ import { styleText } from "util"
 interface RenderComponents {
   head: QuartzComponent
   header: QuartzComponent[]
+  assistant: QuartzComponent[]
   beforeBody: QuartzComponent[]
   pageBody: QuartzComponent
   afterBody: QuartzComponent[]
@@ -231,6 +232,7 @@ export function renderPage(
   const {
     head: Head,
     header,
+    assistant,
     beforeBody,
     pageBody: Content,
     afterBody,
@@ -274,23 +276,32 @@ export function renderPage(
           <Body {...componentData}>
             {LeftComponent}
             <div class="center">
-              <div class="page-header">
-                <Header {...componentData}>
-                  {header.map((HeaderComponent) => (
-                    <HeaderComponent {...componentData} />
-                  ))}
-                </Header>
-                <div class="popover-hint">
-                  {beforeBody.map((BodyComponent) => (
-                    <BodyComponent {...componentData} />
+              <div class="center-shell">
+                <div class="center-main">
+                  <div class="page-header">
+                    <Header {...componentData}>
+                      {header.map((HeaderComponent) => (
+                        <HeaderComponent {...componentData} />
+                      ))}
+                    </Header>
+                    <div class="popover-hint">
+                      {beforeBody.map((BodyComponent) => (
+                        <BodyComponent {...componentData} />
+                      ))}
+                    </div>
+                  </div>
+                  <Content {...componentData} />
+                  <div class="page-footer">
+                    {afterBody.map((BodyComponent) => (
+                      <BodyComponent {...componentData} />
+                    ))}
+                  </div>
+                </div>
+                <div class="assistant-rail-host">
+                  {assistant.map((AssistantComponent) => (
+                    <AssistantComponent {...componentData} />
                   ))}
                 </div>
-              </div>
-              <Content {...componentData} />
-              <div class="page-footer">
-                {afterBody.map((BodyComponent) => (
-                  <BodyComponent {...componentData} />
-                ))}
               </div>
             </div>
             {RightComponent}
